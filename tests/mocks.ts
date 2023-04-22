@@ -1,4 +1,4 @@
-export const repositoriesMock = {
+export const repositoriesDTOMock = {
     "repositories": [
     { 
       id: 1,
@@ -12,4 +12,15 @@ export const repositoriesMock = {
       state: 606
     }]
 }
+
+export const repositoriesORMMock = [
+  { 
+    id: 1,
+  },
+  { id: 2,
+  },
+  {
+    id: 3,
+  }]
+
     

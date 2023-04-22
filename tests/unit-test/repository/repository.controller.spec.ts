@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { repositoriesMock } from '../mocks';
-import { PrismaService } from '../../src/prisma.service';
-import { RepositoryController } from '../../src/repository/repository.controller';
-import { RepositoryService } from '../../src/repository/repository.service';
+import { repositoriesDTOMock } from '../../mocks';
+import { PrismaService } from '../../../src/prisma.service';
+import { RepositoryController } from '../../../src/repository/repository.controller';
+import { RepositoryService } from '../../../src/repository/repository.service';
 
 describe('AppController', () => {
   let repositoryController: RepositoryController;
@@ -18,14 +18,14 @@ describe('AppController', () => {
     repositoryService = app.get<RepositoryService>(RepositoryService);
   });
 
-  describe('root', () => {
+  describe('repository controller cases', () => {
     it('should return empty response when there is no data', async() => {
       const result =  {repositories: []}
       jest.spyOn(repositoryService, 'getRepos').mockImplementation(async()=>result )
       expect(await repositoryController.getRepository()).toBe(result);
     });
     it('should return array repositories response when there is no data', async() => {
-      const result =  {repositories: [repositoriesMock]}
+      const result =  {repositories: [repositoriesDTOMock]}
       jest.spyOn(repositoryService, 'getRepos').mockImplementation(async()=>result )
       expect(await repositoryController.getRepository()).toBe(result);
     });

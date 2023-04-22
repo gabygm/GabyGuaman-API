@@ -60,18 +60,21 @@
       "ts"
     ],
     "testRegex": ".*\\.spec\\.ts$",
-    "roots": ["<rootDir>/src/", "<rootDir>/tests/"],
+    "roots": [
+      "<rootDir>/src/",
+      "<rootDir>/tests/"
+    ],
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "src/**/*.ts"    
+      "src/**/*.ts"
     ],
     "coveragePathIgnorePatterns": [
       ".module.ts",
-      ".main.ts"
+      ".main.ts",
+      "prisma.service.ts"   
     ],
-
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }
