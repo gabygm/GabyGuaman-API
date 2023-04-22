@@ -68,7 +68,8 @@
       "src/**/*.ts"    
     ],
     "coveragePathIgnorePatterns": [
-      ".module.ts"
+      ".module.ts",
+      ".main.ts"
     ],
 
     "coverageDirectory": "../coverage",
