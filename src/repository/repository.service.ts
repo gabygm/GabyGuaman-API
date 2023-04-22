@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { Repository, Prisma } from '@prisma/client';
 import { mapToResponse } from '../../src/repository/repository.mapper';
 
 @Injectable()

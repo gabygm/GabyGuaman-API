@@ -4,7 +4,7 @@ import { PrismaService } from '../../../src/prisma.service';
 import { RepositoryController } from '../../../src/repository/repository.controller';
 import { RepositoryService } from '../../../src/repository/repository.service';
 
-describe('AppController', () => {
+describe('RepositoryController', () => {
   let repositoryController: RepositoryController;
   let repositoryService: RepositoryService;
 
@@ -24,7 +24,7 @@ describe('AppController', () => {
       jest.spyOn(repositoryService, 'getRepos').mockImplementation(async()=>result )
       expect(await repositoryController.getRepository()).toBe(result);
     });
-    it('should return array repositories response when there is no data', async() => {
+    it('should return array repositories response when there is data', async() => {
       const result =  {repositories: [repositoriesDTOMock]}
       jest.spyOn(repositoryService, 'getRepos').mockImplementation(async()=>result )
       expect(await repositoryController.getRepository()).toBe(result);

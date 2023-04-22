@@ -1,4 +1,4 @@
-import { RepositoryDTO } from '../dto/repository.dto';
+import { RepositoryDTO } from './dto/repository.dto';
 import { Repository } from '@prisma/client';
 
 const toRepository = ( id: number) =>{
