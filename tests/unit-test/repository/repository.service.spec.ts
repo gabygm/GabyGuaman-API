@@ -6,7 +6,7 @@ import { RepositoryService } from '../../../src/repository/repository.service';
 import console from 'console';
 
 
-describe('AppController', () => {
+describe('RepositoryService', () => {
   let prisma
   let repositoryService: RepositoryService;
   beforeEach(async () => {

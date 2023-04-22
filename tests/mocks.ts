@@ -23,4 +23,10 @@ export const repositoriesORMMock = [
     id: 3,
   }]
 
+export const organizationDTOMock = {
+    id: 858959067497103400,
+    name: "Banco Pichincha",
+    status: 1
+}
+
     
