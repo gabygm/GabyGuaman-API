@@ -29,7 +29,7 @@ model Repository {
   id                  BigInt     @id @default(autoincrement())
   name                String     @db.String(50)
   state               String     @db.String(1)
-  create_time         DateTime   @db.Timestamp()
+  create_time         DateTime   @default(now()) @db.Timestamp(0)
   status              String     @db.String(1)
   tribuId             BigInt
   tribu               Tribu      @relation(fields: [tribuId], references: [id])
