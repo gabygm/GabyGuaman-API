@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+
+model Organization {
+  id                  BigInt      @id @default(autoincrement())
+  name                String      @db.String(50)
+  status              Int
+}
+
+
+model Tribu {
+  id                  BigInt      @id @default(autoincrement())
+  name                String      @db.String(50)
+  status              Int
+}
+
+model Repository {
+  id                  BigInt     @id @default(autoincrement())
+  name                String     @db.String(50)
+  state               String     @db.String(1)
+  create_time         DateTime   @db.Timestamp()
+  status              String     @db.String(1)
+}
+
+model Metrics {
+  id                   BigInt       @id @default(autoincrement())
+  coverage             Float  
+  bugs                 Int   
+  vulnerabilities      DateTime     @db.Timestamp()
+  hotspot              Int
+  code_smells          Int
+}
