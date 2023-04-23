@@ -15,6 +15,23 @@ Project to manage organization , tribes and repositories data.
 ```bash
 $ npm install
 ```
+## Setup
+To run locally clone the repository.
+
+Add secrets, copy the `example.env` file and rename it to `.env` and then fill in the secrets
+
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?sslmode=verify-full?schema=public"
+Make sure you include USER, PASSWORD, PORT, DATABASE
+
+### Apply migrations
+```bash
+npx prisma migrate dev
+```
+
+### Populate DB with seeds
+```bash
+npx prisma db seed
+```
 
 ## Running the app
 
