@@ -52,7 +52,7 @@ describe('OrganizationController', () => {
       organizationDTO.status = organizationDTOMock.status
 
       jest.spyOn(organizationService, 'patch').mockImplementation(async()=>organizationDTO )
-      const response =await organizationController.update(1, organizationDTO)
+      const response = await organizationController.update(1, organizationDTO)
       expect(response.name).toBe(organizationDTOMock.name);
       expect(response.status).toBe(organizationDTOMock.status);
     });

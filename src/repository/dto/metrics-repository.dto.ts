@@ -1,5 +1,5 @@
-import { Repository, Organization } from '@prisma/client';
 import { IsNumber, IsString } from 'class-validator';
+import { getRepoVerificationState } from '../../../src/utils/repositoryVerificationState';
 
 
 class MetricsRepositoryDto {
@@ -26,24 +26,26 @@ class MetricsRepositoryDto {
     @IsString()
     state: string
 }
-export class ListMetricsRepositoryDto {
-    repositories: MetricsRepositoryDto[] = []
 
-     mapToDTO(repos) {
-        repos.forEach((repo)=>{
-            let metricsRepositoryDto: MetricsRepositoryDto = new MetricsRepositoryDto()
-            metricsRepositoryDto.id =repo.id.toString()
-            metricsRepositoryDto.name = repo.name
-            metricsRepositoryDto.tribe = repo['tribu']?.name
-            metricsRepositoryDto.organization = repo['tribu']?.organization.name
-            metricsRepositoryDto.coverage = repo['metrics'][0]?.coverage
-            metricsRepositoryDto.codeSmells = repo['metrics'][0]?.code_smells
-            metricsRepositoryDto.bugs = repo['metrics'][0]?.bugs
-            metricsRepositoryDto.vulnerabilities = repo['metrics'][0]?.vulnerabilities
-            metricsRepositoryDto.hotspots = repo['metrics'][0]?.hotspot
-            metricsRepositoryDto.verificationState = "test"
-            metricsRepositoryDto.state = repo.state
-            this.repositories.push(metricsRepositoryDto)
-        })
+    
+export const mapToDTO = async (repos) => {  
+    let repositories: MetricsRepositoryDto[] = []
+    for(let i=0; i < repos.length; i++){
+        const repo = repos[i]
+        const verificationState = await getRepoVerificationState(repo.id)           
+        let metricsRepositoryDto: MetricsRepositoryDto = new MetricsRepositoryDto()
+        metricsRepositoryDto.id =repo.id.toString()
+        metricsRepositoryDto.name = repo.name
+        metricsRepositoryDto.tribe = repo['tribu']?.name
+        metricsRepositoryDto.organization = repo['tribu']?.organization.name
+        metricsRepositoryDto.coverage = repo['metrics'][0]?.coverage
+        metricsRepositoryDto.codeSmells = repo['metrics'][0]?.code_smells
+        metricsRepositoryDto.bugs = repo['metrics'][0]?.bugs
+        metricsRepositoryDto.vulnerabilities = repo['metrics'][0]?.vulnerabilities
+        metricsRepositoryDto.hotspots = repo['metrics'][0]?.hotspot
+        metricsRepositoryDto.verificationState = verificationState == 604 ? "Verificado":  verificationState == 605? "En espera": "Aprobado"
+        metricsRepositoryDto.state = repo.state == 'E' ? "Enable" : repo.state == 'D'? "Disable": "Archived"
+        repositories.push(metricsRepositoryDto)
     }
+    return {repositories}
 }

@@ -31,7 +31,7 @@ export const organizationDTOMock = {
 export const metricsRepo = {
   "repositories": [
       {
-          "id": 3,
+          "id": "3",
           "name": "cd-common-tech",
           "tribe": "Centro Digital",
           "organization": "Banco Pichincha tres",
@@ -41,7 +41,7 @@ export const metricsRepo = {
           "vulnerabilities": 7,
           "hotspots": 1,
           "verificationState": "Verificado",
-          "state": "E"
+          "state": "Enable"
       }
   ]
 }
