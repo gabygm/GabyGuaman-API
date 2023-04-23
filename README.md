@@ -60,7 +60,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 ### Endpoints
-### Repositories
+ Repositories
 ```http
 GET /repository                     Get all repositories(mock api)
 ```
