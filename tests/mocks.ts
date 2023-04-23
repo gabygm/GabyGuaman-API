@@ -67,4 +67,6 @@ export const metricsORMMock = [{
   ]
 }]
 
+export const bodyCvsStr = "3,cd-common-tech,Centro Digital,Banco Pichincha tres,90,9,10,7,1,Verificado,Enable\r\n"
+
     

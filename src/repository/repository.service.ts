@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { repositoriesDTOMock } from '../../tests/mocks';
 import { mapToDTO } from '../../src/repository/dto/metrics-repository.dto';
-import { TRIBU_MESSAGE_ERROR, TRIBY_WITHOUTH_COVERAGE } from 'src/utils/constants';
+import { TRIBU_MESSAGE_ERROR, TRIBY_WITHOUTH_COVERAGE } from '../../src/utils/constants';
 
 @Injectable()
 export class RepositoryService {
