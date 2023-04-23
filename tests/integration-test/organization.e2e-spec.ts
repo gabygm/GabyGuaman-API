@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { HttpStatus, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../../src/app.module';
-import { organizationDTOMock, repositoriesDTOMock } from '../mocks';
+import { organizationDTOMock } from '../mocks';
 import { RepositoryService } from '../../src/repository/repository.service';
 import { PrismaService } from '../../src/prisma.service';
 
@@ -34,5 +34,24 @@ describe('Organization (e2e)', () => {
       .set('Accept', 'application/json')
       .send({})
       .expect({"statusCode":HttpStatus.BAD_REQUEST,"message":"Data is missing"});
+  });
+
+
+  test('/organization (PATCH) Should return 200 when receive data correct', () => {
+    organizationDTOMock.name = "Banco Y"
+    return request(app.getHttpServer())
+      .patch('/organization/1')
+      .send(organizationDTOMock)
+      .expect(HttpStatus.OK)
+      .expect(organizationDTOMock);
+  });
+
+  test('/organization (PATCH) Should return error when data is missing', () => {
+    organizationDTOMock.name = null
+    return request(app.getHttpServer())
+      .patch('/organization/test')
+      .set('Accept', 'application/json')
+      .send({})
+      .expect({ statusCode: 400, message: 'Id is ivalid or data is missing' });
   });
 });
