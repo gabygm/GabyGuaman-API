@@ -2,25 +2,26 @@
 <a><img src="https://img.shields.io/badge/Nestjs-9.0.0-red"></a>
 <a><img src="https://img.shields.io/badge/Prisma-ORM-brightgreen"></a>
 <a><img src="https://img.shields.io/badge/Jest-testing-yellow"></a>
+<a><img src="https://img.shields.io/badge/cockroachdb-DATABASE-blue"></a>
 
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Description
 
 Project to manage organization , tribes and repositories data.
 
-## Installation
+
+## Setup
+To run locally clone the repository.
 
 ```bash
 $ npm install
 ```
-## Setup
-To run locally clone the repository.
 
 Add secrets, copy the `example.env` file and rename it to `.env` and then fill in the secrets
-
+```bash
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?sslmode=verify-full?schema=public"
+```
+
 Make sure you include USER, PASSWORD, PORT, DATABASE
 
 ### Apply migrations
@@ -66,26 +67,26 @@ GET /repository
 Organanization
 
 ```http
-GET /organization   get all organizations
+GET /organization                   Get all organizations
 ```
 
 ```http
-POST /organization   create organization
+POST /organization                  Create organization
 ```
 
 ```http
-PATCH /organization/:id   update organization
+PATCH /organization/:id             Update organization
 ```
 
 ```http
-DELETE /organization/:id   delete organization
+DELETE /organization/:id            Delete organization
 ```
 Metricas
 
 ```http
-GET /repository/metrics/:idtribu  get metrics
+GET /repository/metrics/:idtribu    Get metrics
 ```
-download csv
+Download csv
 ```http
 GET /repository/report/:idtribu 
 ```
