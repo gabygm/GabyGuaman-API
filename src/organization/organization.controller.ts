@@ -28,4 +28,18 @@ export class OrganizationController {
     return this.organizationService.findAll();
   }
 
+  @Delete(':id')
+  async remove(@Param('id') id: number): Promise<{}> {
+    if(id == null || isNaN(id) ){
+      throw new HttpException('Id is ivalid ', HttpStatus.BAD_REQUEST);
+    }
+    const response = await this.organizationService.delete(id);
+    if(response == null){
+      throw new HttpException('Id organization is not in the DB ', HttpStatus.BAD_REQUEST);
+
+    }
+    return response
+   
+  }
+
 }

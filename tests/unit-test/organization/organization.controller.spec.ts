@@ -62,7 +62,7 @@ describe('OrganizationController', () => {
   
       jest.spyOn(organizationService, 'patch').mockImplementation(async()=>organizationDTO )
       try {
-        await await organizationController.update(null,organizationDTO)
+        await organizationController.update(null,organizationDTO)
       } catch (error) {
         expect(error).toBeInstanceOf(HttpException)
     
@@ -77,8 +77,8 @@ describe('OrganizationController', () => {
       organizationDTO.status = organizationDTOMock.status
 
       jest.spyOn(organizationService, 'findAll').mockImplementation(async()=>[organizationDTO] )
-      const response =await organizationController.findAll()
-      expect(response).not.toBe([organizationDTO]);
+      const response = await organizationController.findAll()
+      expect(response).toStrictEqual([organizationDTO]);
     });
 
     it('should empty list of organizations when there is no data', async() => {
@@ -86,7 +86,22 @@ describe('OrganizationController', () => {
   
       jest.spyOn(organizationService, 'findAll').mockImplementation(async()=>[] )
       const response =await organizationController.findAll()
-      expect(response).not.toBe([]);
+      expect(response).toStrictEqual([]);
+    });
+  });
+
+  describe('delete organizations controller cases', () => {
+
+    it('should return error when can not delete an organizations', async() => {
+      const organizationDTO = new UpdateOrganizationDto()
+      jest.spyOn(organizationService, 'delete').mockImplementation(null)
+
+      try {
+        await organizationController.remove(null)
+      } catch (error) {
+        expect(error).toBeInstanceOf(HttpException)
+    
+      }  
     });
   });
 });

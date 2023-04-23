@@ -21,7 +21,7 @@ export class OrganizationService {
   async patch(id, data: UpdateOrganizationDto): Promise<UpdateOrganizationDto> {
     const response = await this.prisma.organization.update({
       where: {
-        id: parseInt(id) ,
+        id: BigInt(id) ,
       },
       data: {...data},
     })
@@ -35,4 +35,24 @@ export class OrganizationService {
     const responses = await this.prisma.organization.findMany()
     return  mapToListOrganizations(responses)
   }
+
+  async delete(id): Promise<{}> {
+    const org = await this.prisma.organization.findUnique({
+      where:{
+        id: BigInt(id)
+      },
+    })
+    if(org){
+      const response = await this.prisma.organization.delete({
+        where:{
+          id: BigInt(id)
+        },
+      })
+      return { 
+        message: "Organization deleted successfully",
+        name: response.name}
+    }
+    return null
+  }
+
 }
