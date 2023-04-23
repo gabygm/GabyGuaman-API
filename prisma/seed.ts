@@ -92,26 +92,26 @@ async function metrics() {
         bugs: 10,
         vulnerabilities: 7,
         hotspot: 1,
-        code_smell: 9,
+        code_smells: 9,
         repositoryId: 3
         },
       },
   ) 
   const metric2 = await prisma.metrics.upsert({
-    where: { id: 3 },
+    where: { id: 2 },
     update: {},
     create: {
-        id: 1,
+        id: 2,
         coverage: 90,
         bugs: 10,
         vulnerabilities: 7,
         hotspot: 1,
-        code_smell: 9,
+        code_smells: 9,
         repositoryId: 3
         },
       },
   )  
-
+  return {metric, metric2}
 
 }
 
@@ -119,6 +119,7 @@ async function main() {
     await organization()
     await tribu()
     await repos()
+    await metrics()
 }
 main()
   .then(async () => {

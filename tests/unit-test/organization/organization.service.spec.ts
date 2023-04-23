@@ -8,10 +8,8 @@ import { UpdateOrganizationDto } from '../../../src/organization/dto/update-orga
 
 
 describe('OrganizationController', () => {
-  let organizationController: OrganizationController;
   let organizationService: OrganizationService;
   let prisma
-
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
@@ -19,7 +17,6 @@ describe('OrganizationController', () => {
       providers: [OrganizationService, PrismaService],
     }).compile();
     prisma = app.get<PrismaService>(PrismaService)
-    organizationController = app.get<OrganizationController>(OrganizationController);
     organizationService = app.get<OrganizationService>(OrganizationService);
   });
 

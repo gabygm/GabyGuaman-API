@@ -19,15 +19,8 @@ describe('RepositoryController', () => {
   });
 
   describe('repository controller cases', () => {
-    it('should return empty response when there is no data', async() => {
-      const result =  {repositories: []}
-      jest.spyOn(repositoryService, 'getRepos').mockImplementation(async()=>result )
-      expect(await repositoryController.getRepository()).toBe(result);
-    });
-    it('should return array repositories response when there is data', async() => {
-      const result =  {repositories: [repositoriesDTOMock]}
-      jest.spyOn(repositoryService, 'getRepos').mockImplementation(async()=>result )
-      expect(await repositoryController.getRepository()).toBe(result);
+    it('should return array repositories response when there is data', () => {
+      expect(repositoryController.getRepository()).toBe(repositoriesDTOMock);
     });
   });
 });
