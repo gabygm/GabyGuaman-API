@@ -69,4 +69,24 @@ describe('OrganizationController', () => {
       }
     });
   });
+
+  describe('list organizations controller cases', () => {
+    it('should return a list organizations when there is data', async() => {
+      const organizationDTO = new CreateOrganizationDto()
+      organizationDTO.name = organizationDTOMock.name
+      organizationDTO.status = organizationDTOMock.status
+
+      jest.spyOn(organizationService, 'findAll').mockImplementation(async()=>[organizationDTO] )
+      const response =await organizationController.findAll()
+      expect(response).not.toBe([organizationDTO]);
+    });
+
+    it('should empty list of organizations when there is no data', async() => {
+      const organizationDTO = new UpdateOrganizationDto()
+  
+      jest.spyOn(organizationService, 'findAll').mockImplementation(async()=>[] )
+      const response =await organizationController.findAll()
+      expect(response).not.toBe([]);
+    });
+  });
 });

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateOrganizationDto } from './dto/create-organization.dto';
+import { CreateOrganizationDto, mapToListOrganizations } from './dto/create-organization.dto';
 import { PrismaService } from '../prisma.service';
 import { UpdateOrganizationDto } from './dto/update-organization.dto';
 
@@ -29,5 +29,10 @@ export class OrganizationService {
     responseDto.fromEnttity(response)
     return responseDto
 
+  }
+
+  async findAll(): Promise<CreateOrganizationDto[]>{
+    const responses = await this.prisma.organization.findMany()
+    return  mapToListOrganizations(responses)
   }
 }

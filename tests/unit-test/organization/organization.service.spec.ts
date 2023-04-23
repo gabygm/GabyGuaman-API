@@ -23,7 +23,7 @@ describe('OrganizationController', () => {
     organizationService = app.get<OrganizationService>(OrganizationService);
   });
 
-  describe('create organization controller cases', () => {
+  describe('create organization service cases', () => {
     it('should responseDTO object when the data sent is correct', async() => {
       const organizationDTO = new CreateOrganizationDto()
       organizationDTO.name = organizationDTOMock.name
@@ -43,8 +43,8 @@ describe('OrganizationController', () => {
     });
   });
 
-  describe('update organization controller cases', () => {
-    it('should updateDTO object when the data sent is correct', async() => {
+  describe('update organization service cases', () => {
+    it('should return updateDTO object when the data sent is correct', async() => {
       const organizationDTO = new UpdateOrganizationDto()
       organizationDTO.name = organizationDTOMock.name
       organizationDTO.status = organizationDTOMock.status
@@ -60,6 +60,25 @@ describe('OrganizationController', () => {
       } catch (error) {
         expect(error).toBeInstanceOf(TypeError)
       }
+
+    });
+  });
+
+  describe('get organizations service cases', () => {
+    it('should return a list of updateDTOs objects when there is data', async() => {
+      const organizationDTO = new CreateOrganizationDto()
+      organizationDTO.id = 1
+      organizationDTO.name = organizationDTOMock.name
+      organizationDTO.status = organizationDTOMock.status
+      prisma.organization.findMany = jest.fn().mockReturnValueOnce([organizationDTO])
+      const responseDTO = await organizationService.findAll()
+      expect(responseDTO).toStrictEqual([organizationDTO]);
+    });
+
+    it('should return a empty list when there is no data', async() => {
+      prisma.organization.findMany = jest.fn().mockReturnValueOnce([])
+      const responseDTO = await organizationService.findAll()
+      expect(responseDTO).toStrictEqual([]);
 
     });
   });

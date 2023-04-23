@@ -23,4 +23,9 @@ export class OrganizationController {
     return this.organizationService.patch(id, updateOrganizationDto);
   }
 
+  @Get()
+  findAll() {
+    return this.organizationService.findAll();
+  }
+
 }
