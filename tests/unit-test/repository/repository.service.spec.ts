@@ -1,9 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { repositoriesDTOMock, repositoriesORMMock } from '../../mocks';
 import { PrismaService } from '../../../src/prisma.service';
-import { mapToResponse } from '../../../src/repository/repository.mapper';
 import { RepositoryService } from '../../../src/repository/repository.service';
-import console from 'console';
 
 
 describe('RepositoryService', () => {

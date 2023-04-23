@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
+import { HttpStatus, INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
-import { AppModule } from '../../../src/app.module';
-import { repositoriesDTOMock } from '../../mocks';
-import { RepositoryService } from '../../../src/repository/repository.service';
-import { PrismaService } from '../../../src/prisma.service';
+import { AppModule } from '../../src/app.module';
+import { repositoriesDTOMock } from '../mocks';
+import { RepositoryService } from '../../src/repository/repository.service';
+import { PrismaService } from '../../src/prisma.service';
 
-describe('AppController (e2e)', () => {
+describe('Repository (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
@@ -22,7 +22,7 @@ describe('AppController (e2e)', () => {
   test('/repository (GET) Should return 200 when there is data', () => {
     return request(app.getHttpServer())
       .get('/repository')
-      .expect(200)
+      .expect(HttpStatus.OK)
       .expect(repositoriesDTOMock);
   });
 });

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpException, HttpStatus } from '@nestjs/common';
 import { OrganizationService } from './organization.service';
 import { CreateOrganizationDto } from './dto/create-organization.dto';
 
@@ -8,6 +8,9 @@ export class OrganizationController {
 
   @Post()
   create(@Body() createOrganizationDto: CreateOrganizationDto): Promise<CreateOrganizationDto>{
+    if((createOrganizationDto.name || createOrganizationDto.status) == null){
+      throw new HttpException('Data is missing', HttpStatus.BAD_REQUEST);
+    }
     return this.organizationService.create(createOrganizationDto);
   }
 
