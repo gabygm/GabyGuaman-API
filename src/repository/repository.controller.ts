@@ -14,7 +14,7 @@ export class RepositoryController {
   @Get("repository/metrics/:idtribu")
   async getRepositoryMetrics(@Param('idtribu') id: number): Promise<any> {
     if(id == null || isNaN(id) ){
-      throw new HttpException('Id is ivalid ', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Id is invalid ', HttpStatus.BAD_REQUEST);
     }
     return await this.repositoryService.getReposMetrics(id)
   }
@@ -24,7 +24,7 @@ export class RepositoryController {
   @Header('Content-Disposition','attachment; filename="reporte.csv')
   async reporRepositoryMetrics(@Param('idtribu') id: number): Promise<any> {
     if(id == null || isNaN(id) ){
-      throw new HttpException('Id is ivalid ', HttpStatus.BAD_REQUEST);
+      throw new HttpException('Id is invalid ', HttpStatus.BAD_REQUEST);
     }
     const repos = await this.repositoryService.getReposMetrics(id)
     return csvDataHeder +bodyReport(repos.repositories)

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateOrganizationDto, mapToListOrganizations } from './dto/create-organization.dto';
 import { PrismaService } from '../prisma.service';
 import { UpdateOrganizationDto } from './dto/update-organization.dto';
+import { ORGANIZATION_DELETED } from '../../src/utils/constants';
 
 
 @Injectable()
@@ -49,7 +50,7 @@ export class OrganizationService {
         },
       })
       return { 
-        message: "Organization deleted successfully",
+        message: ORGANIZATION_DELETED,
         name: response.name}
     }
     return null

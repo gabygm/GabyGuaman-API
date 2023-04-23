@@ -1,4 +1,3 @@
-import { CreateOrganizationDto } from './create-organization.dto';
 import { IsNumber, IsOptional, IsString } from 'class-validator';
 import { Organization } from '@prisma/client';
 

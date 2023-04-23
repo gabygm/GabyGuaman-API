@@ -52,9 +52,7 @@ export class RepositoryService {
       }
       return mapToDTO(repositoryResponse)
 
-    }
-    console.log("tribu", tribu)
-    
+    }    
     return {
       message: TRIBU_MESSAGE_ERROR
     }

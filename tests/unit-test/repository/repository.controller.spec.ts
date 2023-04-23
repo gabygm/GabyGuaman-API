@@ -19,7 +19,7 @@ describe('RepositoryController', () => {
   });
 
   describe('repository controller cases', () => {
-    it('should return array repositories response when there is data', () => {
+    it('should return array repositories when there is data', () => {
       expect(repositoryController.getRepository()).toBe(repositoriesDTOMock);
     });
   });

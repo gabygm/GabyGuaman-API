@@ -30,7 +30,7 @@ describe('OrganizationController', () => {
       expect(responseDTO).toStrictEqual(organizationDTO);
     });
 
-    it('should return error when data is missing', async() => {
+    it('should return an error when data is missing', async() => {
       prisma.organization.create = jest.fn().mockReturnValueOnce("Missing data")
        try {
         await organizationService.create(null)

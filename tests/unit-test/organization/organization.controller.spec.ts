@@ -33,7 +33,7 @@ describe('OrganizationController', () => {
       expect(response.status).toBe(organizationDTOMock.status);
     });
 
-    it('should return error data when data is missing', async() => {
+    it('should return an error data when data is missing', async() => {
       const organizationDTO = new CreateOrganizationDto()
   
       jest.spyOn(organizationService, 'create').mockImplementation(async()=>organizationDTO )
@@ -57,7 +57,7 @@ describe('OrganizationController', () => {
       expect(response.status).toBe(organizationDTOMock.status);
     });
 
-    it('should return error data when data id organization is missing', async() => {
+    it('should return error data when id organization is missing', async() => {
       const organizationDTO = new UpdateOrganizationDto()
   
       jest.spyOn(organizationService, 'patch').mockImplementation(async()=>organizationDTO )
@@ -81,9 +81,7 @@ describe('OrganizationController', () => {
       expect(response).toStrictEqual([organizationDTO]);
     });
 
-    it('should empty list of organizations when there is no data', async() => {
-      const organizationDTO = new UpdateOrganizationDto()
-  
+    it('should return empty list of organizations when there is no data', async() => {
       jest.spyOn(organizationService, 'findAll').mockImplementation(async()=>[] )
       const response =await organizationController.findAll()
       expect(response).toStrictEqual([]);
@@ -93,7 +91,6 @@ describe('OrganizationController', () => {
   describe('delete organizations controller cases', () => {
 
     it('should return error when can not delete an organizations', async() => {
-      const organizationDTO = new UpdateOrganizationDto()
       jest.spyOn(organizationService, 'delete').mockImplementation(null)
 
       try {
