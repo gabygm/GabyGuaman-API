@@ -1,4 +1,4 @@
 export interface RepositoryDTO {
-       id: number
-       state: number
-} 
+  id: number;
+  state: number;
+}
