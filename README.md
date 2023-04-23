@@ -62,9 +62,9 @@ $ npm run test:cov
 ### Endpoints
 ### Repositories
 ```http
-GET /repository
+GET /repository                     Get all repositories(mock api)
 ```
-Organanization
+Organanization                      
 
 ```http
 GET /organization                   Get all organizations
