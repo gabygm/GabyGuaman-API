@@ -24,7 +24,6 @@ export const repositoriesORMMock = [
   }]
 
 export const organizationDTOMock = {
-    id: 858959067497103400,
     name: "Banco Pichincha",
     status: 1
 }
