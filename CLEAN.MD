@@ -1,0 +1,39 @@
+src/  # Raíz del proyecto
+├── 📁application/  #lógica de negocio y casos de uso
+│   ├── use-cases/
+│   │   ├── create-item.use-case.ts
+│   └── dtos/  # Objetos de transferencia de datos (DTOs) para validación y estructura de datos
+│       ├── create-item.dto.ts
+├── 📁domain/  # Contiene la representación pura del negocio sin dependencias externas
+│   ├── entities/ 
+│   │   ├── item.entity.ts
+│   ├── exceptions/  # Excepciones de dominio que encapsulan errores de negocio
+│   │   ├── item-not-found.exception.ts  # Excepción cuando un item no es encontrado
+│   ├── repositories/  # Definición de interfaces de acceso a datos (sin implementación)
+│   │   ├── item.repository.ts  # Interfaz para el repositorio de items
+│   └── services/  # Servicios de dominio con lógica de negocio pura
+│       ├── item.service.ts
+├── 📁infrastructure/  # Implementaciones concretas de adaptadores, persistencia y controladores
+│   ├── adapters/  # Adaptadores que integran servicios externos y bases de datos
+│   │   ├── database/  # Implementaciones de persistencia
+│   │   │   ├── typeorm-item.repository.ts  # Repositorio de items con TypeORM
+│   │   ├── http/  # Clientes HTTP para llamadas externas
+│   │   │   ├── axios-client.ts 
+│   ├── config/  # Configuración de la aplicación kafka, bd
+│   │   ├── database.config.ts
+│   ├── controllers/  # Controladores de NestJS que manejan las peticiones HTTP
+│   │   ├── item.controller.ts
+│   ├── modules/  # Módulos de NestJS que organizan la aplicación
+│   │   ├── item.module.ts
+│   ├── interceptors/  # Interceptores globales para modificar respuestas o manejar tiempos de ejecución
+│   ├── middleware/  # Middleware para procesar solicitudes antes de llegar a los controladores
+│   ├── filters/  # Filtros de excepciones personalizados para capturar errores
+│   ├── guards/  # Guards de NestJS para protección y control de acceso
+│   ├── exceptions/  # Manejo centralizado de excepciones en la infraestructura
+├── 📁utils/  # Funciones genéricas y reutilizables en toda la aplicación
+│   ├── date.util.ts
+│   └── crypto.util.ts
+├── 📁commons/  # Componentes compartidos que pueden ser usados en toda la aplicación
+│   ├── logger.ts  # Configuración de logging centralizado
+├── main.ts  # Punto de entrada principal de la aplicación
+├── app.module.ts  # Módulo raíz que agrupa la aplicación
