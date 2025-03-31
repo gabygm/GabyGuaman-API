@@ -1,4 +1,4 @@
-src/  # Raíz del proyecto
+src/
 ├── 📁application/  #lógica de negocio y casos de uso
 │   ├── use-cases/
 │   │   ├── create-item.use-case.ts
