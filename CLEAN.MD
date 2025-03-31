@@ -1,5 +1,5 @@
-**src/**
-├── 📁**application/**  # Lógica de negocio y casos de uso
+src/
+├── 📁*application*  # Lógica de negocio y casos de uso
 │   ├── use-cases/
 │   │   ├── create-item.use-case.ts
 │   └── dtos/  # Objetos de transferencia de datos (DTOs) para validación y estructura de datos
