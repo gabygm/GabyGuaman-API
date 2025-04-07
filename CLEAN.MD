@@ -1,5 +1,5 @@
 src/
-├── 📁 <strong>application/</strong> # Lógica de negocio y casos de uso
+├── 📁  application/ # Lógica de negocio y casos de uso
 │   ├── use-cases/
 │   │   ├── create-item.use-case.ts
 │   └── dtos/  # Objetos de transferencia de datos (DTOs) para validación y estructura de datos
@@ -21,7 +21,6 @@ src/
 │   │   ├── database.config.ts
 │   ├── controllers/  # Controladores de NestJS que manejan las peticiones HTTP
 │   │   ├── item.controller.ts
-│   ├── modules/  # Módulos de NestJS que organizan la aplicación
 │   ├── interceptors/  # Interceptores globales para modificar respuestas o manejar tiempos de ejecución
 │   ├── middleware/  # Middleware para procesar solicitudes antes de llegar a los controladores
 │   ├── exceptions/  # Manejo centralizado de excepciones en la infraestructura
