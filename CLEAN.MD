@@ -2,7 +2,7 @@ src/
 ├── 📁  application/     # Lógica de negocio y casos de uso
 │   ├── use-cases/
 │   └── dtos/
-│    └── errors/
+│   └── errors/
 ├── 📁 domain/           # Representación pura del negocio sin dependencias externas
 │   ├── entities/ 
 │   ├── value-objects/
